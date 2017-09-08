@@ -40,6 +40,19 @@ var ListHero = React.createClass({
         })
     },
 
+    heroDetail: function(){
+        var id = this.state.id;
+
+        return (
+            <div>
+                 <h1>{json.heroes[id].name}</h1>
+            <p>{json.heroes[id].description}</p>
+            </div>
+           
+            
+        )
+    },
+
     render: function(){
         var {id} = this.state;   
         return (
