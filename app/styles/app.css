@@ -1,0 +1,19 @@
+input[type=search]{
+    box-shadow: none;
+}
+
+.top-bar, .top-bar ul {
+    background-color: #DE4A4A
+}
+
+.top-bar ul a{
+    color: #fff;
+}
+
+.menu-text{
+    color: #000000;
+}
+
+.page-title{
+    margin-top: 2.5rem;
+}
