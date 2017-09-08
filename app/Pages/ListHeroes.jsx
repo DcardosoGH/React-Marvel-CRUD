@@ -4,39 +4,47 @@ const json = require('json-loader!../api/heroes.json');
 
 var ListHero = React.createClass({
 
-    componentDidMount: function () {
-        var id = this.props.location.query.id;
-      },
-
-      componentWillReceiveProps: function (newProps) {
-        var location = newProps.location.query.location;
-    
-        if (location && location.length > 0) {
-          this.handleSearch(location);
-          window.location.hash = '#/';
+    getInitialState: function () {
+        return {
+          isLoading: false
         }
       },
-
-
-    render: function(){        
+    
+    listHeroes: function(){
         return (
             <div>
                 <h1>Hero List </h1>
                 <p> Click on each Hero to see it's Details</p>
                 <div>
                     <ul>
-                       <li><button className="button hollow">{json.heroes[0].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[1].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[2].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[3].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[4].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[5].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[6].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[7].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[8].name}</button></li>
-                       <li><button className="button hollow">{json.heroes[9].name}</button></li>                  
+                    <li><button className="button hollow" onClick={this.handleClick} value="0">{json.heroes[0].name}</button></li>
+                    <li><button className="button hollow"onClick={this.handleClick}  value="1">{json.heroes[1].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="2">{json.heroes[2].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="3">{json.heroes[3].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="4">{json.heroes[4].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="5">{json.heroes[5].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="6">{json.heroes[6].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="7">{json.heroes[7].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="8">{json.heroes[8].name}</button></li>
+                    <li><button className="button hollow" onClick={this.handleClick} value="9">{json.heroes[9].name}</button></li>                  
                     </ul>
                 </div>
+            </div>
+        )       
+    },
+
+    handleClick: function(e){
+        var heroid = e.target.value;
+        this.setstate({
+            id: heroid
+        })
+    },
+
+    render: function(){
+        var {id} = this.state;   
+        return (
+            <div>
+                {this.listHeroes()}
             </div>
         )
     }

@@ -25,9 +25,9 @@ var HeroDetail = React.createClass({
     render: function(){        
         return (
             <div>
-                <h1>{heroName}</h1>
-                <p>{heroDesc}</p>
-                <img src={heroImg} alt=""/>
+                <h1>{this.state.heroName}</h1>
+                <p>{this.state.heroName}</p>
+                <img src={this.state.heroName} alt=""/>
                 <Link to="HeroSearch">Return to Hero List</Link>
             </div>
         )

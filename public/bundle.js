@@ -27705,20 +27705,13 @@
 	    displayName: 'ListHero',
 
 
-	    componentDidMount: function componentDidMount() {
-	        var id = this.props.location.query.id;
+	    getInitialState: function getInitialState() {
+	        return {
+	            isLoading: false
+	        };
 	    },
 
-	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
-	        var location = newProps.location.query.location;
-
-	        if (location && location.length > 0) {
-	            this.handleSearch(location);
-	            window.location.hash = '#/';
-	        }
-	    },
-
-	    render: function render() {
+	    listHeroes: function listHeroes() {
 	        return React.createElement(
 	            'div',
 	            null,
@@ -27743,7 +27736,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '0' },
 	                            json.heroes[0].name
 	                        )
 	                    ),
@@ -27752,7 +27745,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '1' },
 	                            json.heroes[1].name
 	                        )
 	                    ),
@@ -27761,7 +27754,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '2' },
 	                            json.heroes[2].name
 	                        )
 	                    ),
@@ -27770,7 +27763,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '3' },
 	                            json.heroes[3].name
 	                        )
 	                    ),
@@ -27779,7 +27772,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '4' },
 	                            json.heroes[4].name
 	                        )
 	                    ),
@@ -27788,7 +27781,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '5' },
 	                            json.heroes[5].name
 	                        )
 	                    ),
@@ -27797,7 +27790,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '6' },
 	                            json.heroes[6].name
 	                        )
 	                    ),
@@ -27806,7 +27799,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '7' },
 	                            json.heroes[7].name
 	                        )
 	                    ),
@@ -27815,7 +27808,7 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '8' },
 	                            json.heroes[8].name
 	                        )
 	                    ),
@@ -27824,12 +27817,29 @@
 	                        null,
 	                        React.createElement(
 	                            'button',
-	                            { className: 'button hollow' },
+	                            { className: 'button hollow', onClick: this.handleClick, value: '9' },
 	                            json.heroes[9].name
 	                        )
 	                    )
 	                )
 	            )
+	        );
+	    },
+
+	    handleClick: function handleClick(e) {
+	        var heroid = e.target.value;
+	        this.setstate({
+	            id: heroid
+	        });
+	    },
+
+	    render: function render() {
+	        var id = this.state.id;
+
+	        return React.createElement(
+	            'div',
+	            null,
+	            this.listHeroes()
 	        );
 	    }
 
