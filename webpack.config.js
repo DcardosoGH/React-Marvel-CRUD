@@ -31,7 +31,8 @@ module.exports = {
       applicationStyles: 'app/styles/app.css',
       HeroError: 'app/Pages/HeroSearch/components/HeroError.jsx',
       ListHeroes: 'app/Pages/ListHeroes.jsx',
-      HeroDetail: 'app/Pages/HeroDetail.jsx'
+      HeroDetail: 'app/Pages/HeroDetail.jsx',
+      HeroMain: 'app/Pages/HeroMain.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
