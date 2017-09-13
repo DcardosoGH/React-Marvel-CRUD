@@ -25522,17 +25522,18 @@
 	        });
 	    },
 
-	    addHero: function addHero() {
-	        var heroList = json.heroes;
-	        var id = '10';
-	        var name = 'Human Torch';
-	        var description = 'Human Torch is a member of the Fantastic 4 Group';
-	        var img = 'http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg';
-	        var newHero = { id: id, name: name, description: description, img: img };
-	        heroList.push(newHero);
-	        json.heroes = heroList;
-
-	        return json.heroes;
+	    addHero: function addHero(name, desc) {
+	        var new_id = json.heroes.length;
+	        var Hero = {
+	            id: new_id++,
+	            name: name,
+	            description: desc,
+	            img: {
+	                path: "http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg",
+	                extension: "jpg"
+	            }
+	        };
+	        json.heroes.push(Hero);
 	    }
 	};
 
@@ -27481,44 +27482,27 @@
 
 	var React = __webpack_require__(8);
 
-	var _require = __webpack_require__(166),
-	    Link = _require.Link,
-	    IndexLink = _require.IndexLink;
-	//const json = require('json-loader!../api/heroes.json');
-
-	var HeroDetail = function HeroDetail(_ref) {
-	    var id = _ref.id,
-	        name = _ref.name,
-	        desc = _ref.desc,
-	        img = _ref.img;
+	var HeroDetails = function HeroDetails(_ref) {
+	    var hero = _ref.hero;
 
 	    return React.createElement(
 	        'div',
-	        { className: 'small-4 columns' },
-	        React.createElement('br', null),
-	        React.createElement('br', null),
-	        React.createElement('br', null),
-	        React.createElement('br', null),
+	        null,
 	        React.createElement(
 	            'h1',
 	            null,
-	            ' ',
-	            name,
-	            ' '
+	            hero[0]
 	        ),
 	        React.createElement(
 	            'p',
 	            null,
-	            ' ',
-	            desc
+	            hero[1]
 	        ),
-	        React.createElement('img', { src: img, alt: '' }),
-	        React.createElement('br', null),
-	        React.createElement('br', null)
+	        React.createElement('img', { src: hero[2] })
 	    );
 	};
 
-	module.exports = HeroDetail;
+	module.exports = HeroDetails;
 
 /***/ }),
 /* 262 */
@@ -27730,10 +27714,17 @@
 
 	var json = __webpack_require__(256);
 	var HeroDetail = __webpack_require__(267);
+	var heroApi = __webpack_require__(229);
 
 	var ListHero = React.createClass({
 	    displayName: 'ListHero',
 
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            newHero: false
+	        };
+	    },
 
 	    handleClick: function handleClick(e) {
 	        var heroid = e.target.value;
@@ -27742,22 +27733,56 @@
 	        //console.log(heroid);
 	    },
 
+	    handleNewHero: function handleNewHero(e) {
+	        e.preventDefault();
+	        var heroName = this.refs.name.value;
+	        var heroDesc = this.refs.description.value;
+	        heroApi.addHero(heroName, heroDesc);
+	        var that = this;
+	        that.setState({
+	            newHero: false
+	        });
+	        console.log(heroName, '', heroDesc);
+	    },
+
+	    addhero: function addhero() {
+	        var that = this;
+	        //heroApi.addHero();
+	        that.setState({
+	            newHero: true
+	        });
+	    },
+
+
 	    render: function render() {
+	        var newHero = this.state.newHero;
+
 	        var that = this;
 	        function listHeroes() {
+	            if (newHero) {
+	                return React.createElement(
+	                    'form',
+	                    { onSubmit: that.handleNewHero },
+	                    React.createElement('input', { type: 'text', placeholder: 'Hero Name', ref: 'name' }),
+	                    React.createElement('input', { type: 'text', placeholder: 'Hero Description', ref: 'description' }),
+	                    React.createElement(
+	                        'button',
+	                        { className: 'button' },
+	                        ' Submit '
+	                    ),
+	                    React.createElement('br', null),
+	                    React.createElement('br', null)
+	                );
+	            }
 
 	            return React.createElement(
 	                'ul',
 	                null,
 	                json.heroes.map(function (el) {
 	                    return React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { onClick: that.handleClick, className: 'button hollow', value: el.id },
-	                            el.name
-	                        )
+	                        'button',
+	                        { onClick: that.handleClick, className: 'button hollow', value: el.id },
+	                        el.name
 	                    );
 	                })
 	            );
@@ -27780,6 +27805,11 @@
 	                'div',
 	                null,
 	                listHeroes()
+	            ),
+	            React.createElement(
+	                'button',
+	                { className: 'button', onClick: this.addhero },
+	                ' Add a new Hero '
 	            )
 	        );
 	    }
@@ -27860,7 +27890,6 @@
 	    Link = _require.Link,
 	    IndexLink = _require.IndexLink;
 
-	var heroApi = __webpack_require__(229);
 	var json = __webpack_require__(256);
 	var HeroDetail = __webpack_require__(267);
 	var ListHeroes = __webpack_require__(266);
@@ -27875,9 +27904,6 @@
 	        };
 	    },
 
-	    addhero: function addhero() {
-	        heroApi.addHero();
-	    },
 	    onHeroClick: function onHeroClick(id) {
 	        var that = this;
 	        that.setState({
@@ -27909,12 +27935,7 @@
 	            'div',
 	            { className: 'small-12 columns' },
 	            React.createElement(ListHeroes, { onClick: this.onHeroClick }),
-	            renderHero(),
-	            React.createElement(
-	                'button',
-	                { onClick: this.addhero },
-	                ' Add Hero Test '
-	            )
+	            renderHero()
 	        );
 	    }
 

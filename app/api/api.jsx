@@ -26,23 +26,24 @@ module.exports = {
                 var heroDesc =  res.data.data.results[0].description;
                 var heroName = res.data.data.results[0].name;
                 var heroImg =  res.data.data.results[0].thumbnail.path +'.'+ res.data.data.results[0].thumbnail.extension;
-                var Hero = [heroName,heroDesc,heroImg]; 
+                var Hero = [heroName,heroDesc,heroImg];
                 return Hero;
         },function(res) {
             throw new Error('Hero was not found.')
         });
     },
 
-    addHero: function(){
-        var heroList = json.heroes;
-        var id = '10';
-        var name = 'Human Torch';
-        var description = 'Human Torch is a member of the Fantastic 4 Group';
-        var img = 'http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg';
-        var newHero = {id,name,description,img};
-        heroList.push(newHero);
-        json.heroes = heroList;
-        
-       return json.heroes;    
+    addHero: function(name,desc){
+        var new_id = json.heroes.length;
+        var Hero = {
+            id: (new_id++),
+            name: name,
+            description: desc,
+            img: {
+              path: "http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg",
+              extension: "jpg"
+            }
+        };
+        json.heroes.push(Hero);
     }
 }

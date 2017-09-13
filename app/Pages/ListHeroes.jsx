@@ -2,8 +2,15 @@ var React = require('react');
 var {Link, IndexLink} = require('react-router');
 const json = require('json-loader!../api/heroes.json');
 var HeroDetail = require('HeroDetail');
+var heroApi = require('heroApi');
 
 var ListHero = React.createClass({
+    
+    getInitialState: function(){
+        return {
+            newHero:false
+        }
+    },
 
     handleClick: function(e){
         var heroid = e.target.value;
@@ -12,18 +19,52 @@ var ListHero = React.createClass({
         //console.log(heroid);
     },
 
+    handleNewHero: function(e){
+        e.preventDefault();
+        var heroName = this.refs.name.value;
+        var heroDesc = this.refs.description.value;
+        heroApi.addHero(heroName,heroDesc);
+        var that = this;
+        that.setState({
+            newHero:false,
+        });
+        console.log(heroName, '', heroDesc)
+    },
+
+    addhero(){
+        var that= this;
+        //heroApi.addHero();
+        that.setState({
+            newHero:true,
+        })
+    },
+
     render: function(){
+       var {newHero} = this.state;
         var that = this;
         function listHeroes(){
+            if(newHero){
+                return (
+                    
+                    <form onSubmit={that.handleNewHero}>
+                        <input type="text" placeholder="Hero Name" ref="name"/>
+                        <input type="text" placeholder="Hero Description" ref="description"/>
+                        <button className="button"> Submit </button>
+                        <br/>
+                        <br/>
+                    </form>
+                )
+            }
             
-            return (
-                
-                <ul>
+                return(
+                    <ul>
                     {
-                        json.heroes.map(el => <li><button onClick={that.handleClick} className="button hollow" value={el.id}>{el.name}</button></li>) 
+                        json.heroes.map(el => <button onClick={that.handleClick} className="button hollow" value={el.id}>{el.name}</button>) 
                     }
                 </ul>  
-            )
+                )
+                 
+            
         }
 
         return (
@@ -33,6 +74,7 @@ var ListHero = React.createClass({
                     <div>
                         {listHeroes()}
                     </div>
+                    <button className="button" onClick={this.addhero}> Add a new Hero </button>
                 </div>
             
         )
