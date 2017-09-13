@@ -107,11 +107,12 @@
 	var HeroSearch = __webpack_require__(260);
 	var Main = __webpack_require__(264);
 	var ListHeroes = __webpack_require__(266);
+	var HeroMain = __webpack_require__(268);
 	// Load Foundation
-	__webpack_require__(267);
+	__webpack_require__(269);
 	$(document).foundation();
 
-	__webpack_require__(271);
+	__webpack_require__(273);
 
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -119,7 +120,7 @@
 	  React.createElement(
 	    Route,
 	    { path: '/', component: Main },
-	    React.createElement(IndexRoute, { component: ListHeroes }),
+	    React.createElement(IndexRoute, { component: HeroMain }),
 	    React.createElement(Route, { path: 'HeroSearch', component: HeroSearch })
 	  )
 	), document.getElementById('app'));
@@ -27055,7 +27056,7 @@
 /* 256 */
 /***/ (function(module, exports) {
 
-	module.exports = {"heroes":[{"id":0,"name":"Thor","description":"As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate.  He's self-assured, and he would never, ever stop fighting for a worthwhile cause.","modified":"2016-01-05T12:33:20-0500","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350","extension":"jpg"}},{"id":1,"name":"Spider-Man","description":"Bitten by a radioactive spider, high school student Peter Parker gained the speed, strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers to help people.","modified":"2016-09-28T12:15:21-0400","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b","extension":"jpg"}},{"id":2,"name":"Iron Man","description":"Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55","extension":"jpg"}},{"id":3,"name":"Quicksilver","description":"Quicksilver possessed superhuman speed, and could travel on foot at speeds exceeding the speed of sound for hundreds of miles before tiring; he could 'fly' for short distances by flapping his arms or 'vibrating' his legs; he could also use his speed to create cyclones, dodge machine gun and laser fire, and run up walls and across water.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/6/f0/53176ffc42f58","extension":"jpg"}},{"id":4,"name":"Wolverine","description":"Born with super-human senses and the power to heal from almost any wound, Wolverine was captured by a secret Canadian organization and given an unbreakable skeleton and claws. Treated like an animal, it took years for him to control himself. Now, he's a premiere member of both the X-Men and the Avengers.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf","extension":"jpg"}},{"id":5,"name":"Captain America","description":"Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087","extension":"jpg"}},{"id":6,"name":"Fantastic Four","description":"After being exposed to cosmic rays, Reed Richards, Susan Storm, Ben Grimm and Johnny Storm found they had amazing new powers. Reed Richards found he has the ability to stretch his body in any way he wanted, while Susan Storm can turn herself, objects and other people invisible. Ben Grimm transformed into a rocky, super-strong behemoth and Johnny Storm has the ability to set himself on fire. Dubbed the Fantastic Four, Mr. Fantastic, Invisible Woman, Thing and the Human Torch are Marvel's First Family.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/9/60/50febc4f55525","extension":"jpg"}},{"id":7,"name":"Magneto","description":"Magneto is a mutant with the power to manipulate magnetic fields to achieve a wide range of effects.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/b0/5261a7e53f827","extension":"jpg"}},{"id":8,"name":"Nightcrawler","description":"Nightcrawler is a mutant and a member of the X-men. His abilities vary from teleportation to super-agility and other things.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/1/40/526034979bc98","extension":"jpg"}},{"id":1009351,"name":"Hulk","description":"Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.","thumbnail":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0","extension":"jpg"}}]}
+	module.exports = {"heroes":[{"id":0,"name":"Thor","description":"As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate.  He's self-assured, and he would never, ever stop fighting for a worthwhile cause.","modified":"2016-01-05T12:33:20-0500","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350.jpg","extension":"jpg"}},{"id":1,"name":"Spider-Man","description":"Bitten by a radioactive spider, high school student Peter Parker gained the speed, strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers to help people.","modified":"2016-09-28T12:15:21-0400","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg","extension":"jpg"}},{"id":2,"name":"Iron Man","description":"Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg","extension":"jpg"}},{"id":3,"name":"Quicksilver","description":"Quicksilver possessed superhuman speed, and could travel on foot at speeds exceeding the speed of sound for hundreds of miles before tiring; he could 'fly' for short distances by flapping his arms or 'vibrating' his legs; he could also use his speed to create cyclones, dodge machine gun and laser fire, and run up walls and across water.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/6/f0/53176ffc42f58.jpg","extension":"jpg"}},{"id":4,"name":"Wolverine","description":"Born with super-human senses and the power to heal from almost any wound, Wolverine was captured by a secret Canadian organization and given an unbreakable skeleton and claws. Treated like an animal, it took years for him to control himself. Now, he's a premiere member of both the X-Men and the Avengers.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf.jpg","extension":"jpg"}},{"id":5,"name":"Captain America","description":"Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087.jpg","extension":"jpg"}},{"id":6,"name":"Fantastic Four","description":"After being exposed to cosmic rays, Reed Richards, Susan Storm, Ben Grimm and Johnny Storm found they had amazing new powers. Reed Richards found he has the ability to stretch his body in any way he wanted, while Susan Storm can turn herself, objects and other people invisible. Ben Grimm transformed into a rocky, super-strong behemoth and Johnny Storm has the ability to set himself on fire. Dubbed the Fantastic Four, Mr. Fantastic, Invisible Woman, Thing and the Human Torch are Marvel's First Family.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/9/60/50febc4f55525.jpg","extension":"jpg"}},{"id":7,"name":"Magneto","description":"Magneto is a mutant with the power to manipulate magnetic fields to achieve a wide range of effects.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/3/b0/5261a7e53f827.jpg","extension":"jpg"}},{"id":8,"name":"Nightcrawler","description":"Nightcrawler is a mutant and a member of the X-men. His abilities vary from teleportation to super-agility and other things.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/1/40/526034979bc98.jpg","extension":"jpg"}},{"id":9,"name":"Hulk","description":"Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.","img":{"path":"http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg","extension":"jpg"}}]}
 
 /***/ }),
 /* 257 */
@@ -27599,14 +27600,11 @@
 	    'div',
 	    null,
 	    React.createElement(Nav, null),
+	    React.createElement('br', null),
 	    React.createElement(
 	      'div',
 	      { className: 'row' },
-	      React.createElement(
-	        'div',
-	        { className: 'columns medium-6 large-4 small-centered' },
-	        props.children
-	      )
+	      props.children
 	    )
 	  );
 	};
@@ -27700,24 +27698,26 @@
 	    IndexLink = _require.IndexLink;
 
 	var json = __webpack_require__(256);
+	var HeroDetail = __webpack_require__(267);
 
 	var ListHero = React.createClass({
 	    displayName: 'ListHero',
 
 
-	    getInitialState: function getInitialState() {
-	        return {
-	            isLoading: false
-	        };
+	    handleClick: function handleClick(e) {
+	        var heroid = e.target.value;
+	        this.props.onClick(heroid);
+	        //console.log(heroid);
 	    },
 
-	    listHeroes: function listHeroes() {
+	    render: function render() {
+
 	        return React.createElement(
 	            'div',
-	            null,
+	            { className: 'small-8 columns' },
 	            React.createElement(
 	                'h1',
-	                null,
+	                { className: true },
 	                'Hero List '
 	            ),
 	            React.createElement(
@@ -27824,52 +27824,135 @@
 	                )
 	            )
 	        );
-	    },
-
-	    handleClick: function handleClick(e) {
-	        var heroid = e.target.value;
-	        this.setstate({
-	            id: heroid
-	        });
-	    },
-
-	    render: function render() {
-	        var id = this.state.id;
-
-	        return React.createElement(
-	            'div',
-	            null,
-	            this.listHeroes()
-	        );
 	    }
 
 	});
 
 	module.exports = ListHero;
 
-	//
-	// {json.heroes[0].name}
-	// {json.heroes[1].name}
-	// {json.heroes[2].name}
-	// {json.heroes[3].name}
-	// {json.heroes[4].name}
-	// {json.heroes[5].name}
-	// {json.heroes[6].name}
-	// {json.heroes[7].name}
-	// {json.heroes[8].name}
-	// {json.heroes[9].name}
-
 /***/ }),
 /* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var _require = __webpack_require__(166),
+	    Link = _require.Link,
+	    IndexLink = _require.IndexLink;
+	//const json = require('json-loader!../api/heroes.json');
+
+	var HeroDetail = function HeroDetail(_ref) {
+	    var id = _ref.id,
+	        name = _ref.name,
+	        desc = _ref.desc,
+	        img = _ref.img;
+
+	    return React.createElement(
+	        'div',
+	        { className: 'small-4 columns' },
+	        React.createElement('br', null),
+	        React.createElement('br', null),
+	        React.createElement('br', null),
+	        React.createElement('br', null),
+	        React.createElement(
+	            'h1',
+	            null,
+	            ' ',
+	            name,
+	            ' '
+	        ),
+	        React.createElement(
+	            'p',
+	            null,
+	            ' ',
+	            desc
+	        ),
+	        React.createElement('img', { src: img, alt: '' }),
+	        React.createElement('br', null),
+	        React.createElement('br', null)
+	    );
+	};
+
+	module.exports = HeroDetail;
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var _require = __webpack_require__(166),
+	    Link = _require.Link,
+	    IndexLink = _require.IndexLink;
+
+	var json = __webpack_require__(256);
+	var HeroDetail = __webpack_require__(267);
+	var ListHeroes = __webpack_require__(266);
+	var Nav = __webpack_require__(265);
+
+	var HeroMain = React.createClass({
+	    displayName: 'HeroMain',
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            clicked: false
+	        };
+	    },
+
+	    onHeroClick: function onHeroClick(id) {
+	        var that = this;
+	        that.setState({
+	            clicked: true,
+	            id: id
+	        });
+	    },
+
+
+	    render: function render() {
+	        var _state = this.state,
+	            id = _state.id,
+	            clicked = _state.clicked;
+
+	        var heroes = json.heroes;
+
+	        function renderHero() {
+	            if (clicked) {
+
+	                return React.createElement(
+	                    'div',
+	                    null,
+	                    React.createElement(HeroDetail, { id: heroes[id].id, name: heroes[id].name, desc: heroes[id].description, img: heroes[id].img.path })
+	                );
+	            }
+	        }
+
+	        return React.createElement(
+	            'div',
+	            { className: 'small-12 columns' },
+	            React.createElement(ListHeroes, { onClick: this.onHeroClick }),
+	            renderHero()
+	        );
+	    }
+
+	});
+
+	module.exports = HeroMain;
+
+/***/ }),
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(268);
+	var content = __webpack_require__(270);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(270)(content, {});
+	var update = __webpack_require__(272)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27886,10 +27969,10 @@
 	}
 
 /***/ }),
-/* 268 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(269)();
+	exports = module.exports = __webpack_require__(271)();
 	// imports
 
 
@@ -27900,7 +27983,7 @@
 
 
 /***/ }),
-/* 269 */
+/* 271 */
 /***/ (function(module, exports) {
 
 	/*
@@ -27956,7 +28039,7 @@
 
 
 /***/ }),
-/* 270 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -28208,16 +28291,16 @@
 
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(272);
+	var content = __webpack_require__(274);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(270)(content, {});
+	var update = __webpack_require__(272)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -28234,10 +28317,10 @@
 	}
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(269)();
+	exports = module.exports = __webpack_require__(271)();
 	// imports
 
 
