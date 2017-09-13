@@ -32,4 +32,17 @@ module.exports = {
             throw new Error('Hero was not found.')
         });
     },
+
+    addHero: function(){
+        var heroList = json.heroes;
+        var id = '10';
+        var name = 'Human Torch';
+        var description = 'Human Torch is a member of the Fantastic 4 Group';
+        var img = 'http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg';
+        var newHero = {id,name,description,img};
+        heroList.push(newHero);
+        json.heroes = heroList;
+        
+       return json.heroes;    
+    }
 }

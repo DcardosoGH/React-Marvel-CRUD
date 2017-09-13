@@ -25520,6 +25520,19 @@
 	        }, function (res) {
 	            throw new Error('Hero was not found.');
 	        });
+	    },
+
+	    addHero: function addHero() {
+	        var heroList = json.heroes;
+	        var id = '10';
+	        var name = 'Human Torch';
+	        var description = 'Human Torch is a member of the Fantastic 4 Group';
+	        var img = 'http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a7f7b0917.jpg';
+	        var newHero = { id: id, name: name, description: description, img: img };
+	        heroList.push(newHero);
+	        json.heroes = heroList;
+
+	        return json.heroes;
 	    }
 	};
 
@@ -27376,6 +27389,7 @@
 	var HeroDetails = __webpack_require__(261);
 	var HeroForm = __webpack_require__(262);
 	var HeroError = __webpack_require__(263);
+
 	var HeroSearch = React.createClass({
 	    displayName: 'HeroSearch',
 
@@ -27467,27 +27481,44 @@
 
 	var React = __webpack_require__(8);
 
-	var HeroDetails = function HeroDetails(_ref) {
-	    var hero = _ref.hero;
+	var _require = __webpack_require__(166),
+	    Link = _require.Link,
+	    IndexLink = _require.IndexLink;
+	//const json = require('json-loader!../api/heroes.json');
+
+	var HeroDetail = function HeroDetail(_ref) {
+	    var id = _ref.id,
+	        name = _ref.name,
+	        desc = _ref.desc,
+	        img = _ref.img;
 
 	    return React.createElement(
 	        'div',
-	        null,
+	        { className: 'small-4 columns' },
+	        React.createElement('br', null),
+	        React.createElement('br', null),
+	        React.createElement('br', null),
+	        React.createElement('br', null),
 	        React.createElement(
 	            'h1',
 	            null,
-	            hero[0]
+	            ' ',
+	            name,
+	            ' '
 	        ),
 	        React.createElement(
 	            'p',
 	            null,
-	            hero[1]
+	            ' ',
+	            desc
 	        ),
-	        React.createElement('img', { src: hero[2] })
+	        React.createElement('img', { src: img, alt: '' }),
+	        React.createElement('br', null),
+	        React.createElement('br', null)
 	    );
 	};
 
-	module.exports = HeroDetails;
+	module.exports = HeroDetail;
 
 /***/ }),
 /* 262 */
@@ -27707,10 +27738,30 @@
 	    handleClick: function handleClick(e) {
 	        var heroid = e.target.value;
 	        this.props.onClick(heroid);
+	        console.log(heroid);
 	        //console.log(heroid);
 	    },
 
 	    render: function render() {
+	        var that = this;
+	        function listHeroes() {
+
+	            return React.createElement(
+	                'ul',
+	                null,
+	                json.heroes.map(function (el) {
+	                    return React.createElement(
+	                        'li',
+	                        null,
+	                        React.createElement(
+	                            'button',
+	                            { onClick: that.handleClick, className: 'button hollow', value: el.id },
+	                            el.name
+	                        )
+	                    );
+	                })
+	            );
+	        }
 
 	        return React.createElement(
 	            'div',
@@ -27728,100 +27779,7 @@
 	            React.createElement(
 	                'div',
 	                null,
-	                React.createElement(
-	                    'ul',
-	                    null,
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '0' },
-	                            json.heroes[0].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '1' },
-	                            json.heroes[1].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '2' },
-	                            json.heroes[2].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '3' },
-	                            json.heroes[3].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '4' },
-	                            json.heroes[4].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '5' },
-	                            json.heroes[5].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '6' },
-	                            json.heroes[6].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '7' },
-	                            json.heroes[7].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '8' },
-	                            json.heroes[8].name
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'li',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            { className: 'button hollow', onClick: this.handleClick, value: '9' },
-	                            json.heroes[9].name
-	                        )
-	                    )
-	                )
+	                listHeroes()
 	            )
 	        );
 	    }
@@ -27829,6 +27787,19 @@
 	});
 
 	module.exports = ListHero;
+
+	/* <ul>
+	<li><button className="button hollow" onClick={this.handleClick} value="0">{json.heroes[0].name}</button></li>
+	<li><button className="button hollow"onClick={this.handleClick}  value="1">{json.heroes[1].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="2">{json.heroes[2].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="3">{json.heroes[3].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="4">{json.heroes[4].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="5">{json.heroes[5].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="6">{json.heroes[6].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="7">{json.heroes[7].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="8">{json.heroes[8].name}</button></li>
+	<li><button className="button hollow" onClick={this.handleClick} value="9">{json.heroes[9].name}</button></li>                  
+	</ul> */
 
 /***/ }),
 /* 267 */
@@ -27889,6 +27860,7 @@
 	    Link = _require.Link,
 	    IndexLink = _require.IndexLink;
 
+	var heroApi = __webpack_require__(229);
 	var json = __webpack_require__(256);
 	var HeroDetail = __webpack_require__(267);
 	var ListHeroes = __webpack_require__(266);
@@ -27903,6 +27875,9 @@
 	        };
 	    },
 
+	    addhero: function addhero() {
+	        heroApi.addHero();
+	    },
 	    onHeroClick: function onHeroClick(id) {
 	        var that = this;
 	        that.setState({
@@ -27934,7 +27909,12 @@
 	            'div',
 	            { className: 'small-12 columns' },
 	            React.createElement(ListHeroes, { onClick: this.onHeroClick }),
-	            renderHero()
+	            renderHero(),
+	            React.createElement(
+	                'button',
+	                { onClick: this.addhero },
+	                ' Add Hero Test '
+	            )
 	        );
 	    }
 
