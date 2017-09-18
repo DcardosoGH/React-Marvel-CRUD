@@ -2,9 +2,10 @@ var React = require('react');
 var {Link, IndexLink} = require('react-router');
 //const json = require('json-loader!../api/heroes.json');
 
-var HeroDetail = ({id, name, desc, img}) => {  
+var HeroDetail = ({id, name, desc, img}) => {
+
     return (        
-            <div className="small-4 columns">
+            <div className="">
                 <br/>
                 <br/>
                 <br/>
@@ -13,7 +14,7 @@ var HeroDetail = ({id, name, desc, img}) => {
                 <p> {desc}</p>
                 <img src={img} alt=""/>
                 <br/>
-                <br/>          
+                <br/>
             </div>
     )
 }

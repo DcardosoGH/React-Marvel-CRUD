@@ -9,6 +9,7 @@ var HeroMain = React.createClass({
     getInitialState: function(){
         return {
             clicked: false,
+            deleted: false,
         }
     },
 
@@ -20,22 +21,33 @@ var HeroMain = React.createClass({
         });
     },
 
+    onheroDelete(e){
+        var that = this;
+        var id = e.target.value;
+        json.heroes.splice(id);
+        that.setState({
+            deleted: true,
+            clicked:false,
+        });
+    },
+
 
     render: function(){
-        var {id,clicked} = this.state;
+        var {id,clicked,deleted} = this.state;
         var heroes = json.heroes;
-        
+        var that = this;
+
         function renderHero(){
             if(clicked){
                 
                 return (
-                    <div>                    
+                    <div className="small-4 columns">                     
                         <HeroDetail id={heroes[id].id} name={heroes[id].name} desc={heroes[id].description} img={heroes[id].img.path}/>
+                        <button onClick={that.onheroDelete} value={heroes[id].id} className="button"> Delete Hero</button>
                     </div>
                 )
-            }   
+            }
         }
-
         return (            
            <div className="small-12 columns">
                <ListHeroes onClick={this.onHeroClick}/>

@@ -27850,9 +27850,10 @@
 	        desc = _ref.desc,
 	        img = _ref.img;
 
+
 	    return React.createElement(
 	        'div',
-	        { className: 'small-4 columns' },
+	        { className: '' },
 	        React.createElement('br', null),
 	        React.createElement('br', null),
 	        React.createElement('br', null),
@@ -27900,7 +27901,8 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            clicked: false
+	            clicked: false,
+	            deleted: false
 	        };
 	    },
 
@@ -27911,26 +27913,41 @@
 	            id: id
 	        });
 	    },
+	    onheroDelete: function onheroDelete(e) {
+	        var that = this;
+	        var id = e.target.value;
+	        json.heroes.splice(id);
+	        that.setState({
+	            deleted: true,
+	            clicked: false
+	        });
+	    },
 
 
 	    render: function render() {
 	        var _state = this.state,
 	            id = _state.id,
-	            clicked = _state.clicked;
+	            clicked = _state.clicked,
+	            deleted = _state.deleted;
 
 	        var heroes = json.heroes;
+	        var that = this;
 
 	        function renderHero() {
 	            if (clicked) {
 
 	                return React.createElement(
 	                    'div',
-	                    null,
-	                    React.createElement(HeroDetail, { id: heroes[id].id, name: heroes[id].name, desc: heroes[id].description, img: heroes[id].img.path })
+	                    { className: 'small-4 columns' },
+	                    React.createElement(HeroDetail, { id: heroes[id].id, name: heroes[id].name, desc: heroes[id].description, img: heroes[id].img.path }),
+	                    React.createElement(
+	                        'button',
+	                        { onClick: that.onheroDelete, value: heroes[id].id, className: 'button' },
+	                        ' Delete Hero'
+	                    )
 	                );
 	            }
 	        }
-
 	        return React.createElement(
 	            'div',
 	            { className: 'small-12 columns' },
